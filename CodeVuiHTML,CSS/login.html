@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Field</title>
+    <style>
+       *{
+        margin: 0; /* Xóa khoảng cách mặc định của tất cả phần tử */
+        padding: 0; /* Xóa padding mặc định của tất cả phần tử */
+        box-sizing: border-box; /* Tính toán kích thước phần tử theo border + padding */
+        }
+
+        body{
+            background: linear-gradient(135deg, #0f1419 0%
+            , #1a1f35 50%
+            , #2d1b3d 100%); /* Tạo nền gradient tối đẹp mắt */
+            min-height: 100vh; /* Chiều cao tối thiểu = full màn hình*/
+            display: flex; /*Sử dụng flexbox*/
+            justify-content: center; /*Canh giữa ngang*/
+            align-items: center; /*Canh giữa dọc*/
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+
+        .container{
+            background: rgba(20,25,35,0.75); /*Nền tối với độ trong suốt*/
+            backdrop-filter: blur(15px); /*Hiệu ứng glassmorphism mờ phía sau*/
+            padding: 50px; /*Khoảng cách bên trong*/
+            border-radius: 20px; /*Bo góc container*/
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), 0 0 60px rgba(100,60,200,0.15); /*Đổ bóng đẹp*/
+            border: 1px solid rgba(255,255,255,0.08); /*Viền trắng mờ nhẹ hơn*/
+            max-width: 400px; /*Giới hàn chiều rộng*/
+            width: 90%; /*Đáp ứng tốt trên mobile*/
+        }
+
+        .input-container{
+            position: relative; /*Đặt vị trí tương đối cho label & highlight*/
+            margin: 30px 0; /*Khoảng cách từng input*/
+        }
+
+        .input-field{
+            display: block; /*Input chiếm trên dòng*/
+            width: 100%; /*100% chiều ngang*/
+            padding: 16px 0; /*Padding trên-dưới*/
+            font-size: 16px; 
+            border: none; /*Xóa viền mặc định*/
+            border-bottom: 2px solid rgba(255,255,255,0.15); /*Gạch chân mờ dưới*/
+            outline:none; /*Xóa viền xanh khi focus*/
+            background-color: transparent; /*Trong suốt*/
+            color: rgba(255,255,255,0.95);
+            font-weight: 500; /*Độ đậm*/
+            letter-spacing: 0.5px; /*Tăng khoảng cách chữ*/
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); /*Hiệu ứng mượt*/
+        }
+
+        .input-field::placeholder{
+            color: rgba(255,255,255,0.3); /*Placeholder mờ hơn*/
+        }
+
+        .input-field:hover{
+            border-bottom-color: rgba(255,255,255,0.35); /*Hover sáng hơn một chút*/
+            padding: 16px 0; /*Giữ padding*/
+        }
+
+        .input-label{
+            position: absolute; /*Đặt vị trí tuyệt đối*/
+            top: 18px; /*Vị trí nhãn bắt đầu*/
+            left: 0; /*Align trái*/
+            font-size: 16px;
+            color: rgba(255,255,255,0.4); /*Màu nhãn tối hơn*/
+            pointer-events: none; /*Không cho click*/
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); /*Mượt khi di chuyển*/
+            font-weight: 500;
+        }
+
+        .input-highlight{
+            position: absolute; /*Nằm dưới input*/
+            bottom: 0; /*Sát mép dưới*/
+            left: 0; /*Bắt đầu từ trái*/
+            height: 2px; /*Độ cao highlight*/
+            width: 0; /*Bắt đầu từ 0*/
+            background: linear-gradient(
+                90deg
+               ,#4a9eff
+               ,#7b5ff5
+               ,#b34fff
+            ); /*Gradient chạy ngang tối hơn*/
+            background-size: 300% 100%; /*Dùng để tạo animation*/
+            box-shadow: 0 0 15px rgba(74,158,255,0.5),0 0 30px rgba(123,95,245,0.3);/*Glow nhẹ hơn*/
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); /*Hiệu ứng xuất hiện mượt*/
+            border-radius: 2px; /*Bo góc nhẹ*/
+         }
+
+         .input-field:focus{
+            border-bottom-color: rgba(255,255,255,0.2);/*Khi focus viền mờ*/
+            padding: 16px 0;
+         }
+
+         .input-field:focus + .input-label,
+         .input-field:not(:placeholder-shown) + .input-label
+         {
+            top: -28px; /*Đưa label lên trên*/
+            font-size: 12px; /*Nhỏ lại*/
+            color: #6fa8ff; /*Đổi màu xanh dịu hơn*/
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(111,168,255,0.4); /*Highlight label nhẹ hơn*/
+         }
+
+         .input-field:focus + .input-label + .input-highlight{
+            width: 100%; /*Highlight kéo dài toàn input*/
+            animation: gradientShift 2s ease-in-out infinite; /*Gradient chạy qua chạy lại*/
+         }
+
+         @keyframes gradientShift{
+            0%{
+                background-position: 0% center; /*Gradient ở đầu */
+            }
+            50%{
+                background-position: 100% center; /*Gradient chạy qua phải*/
+            }
+            100%{
+                background-position: 0% center; /*Quay lại*/
+            }
+         }
+         
+         .input-field:valid + .input-label{
+            color: #50d4a0; /*Label màu xanh dịu khi input hợp lệ*/
+         }
+
+         .input-field:invalid + .input-label{
+            color: #ff6b8a; /*Label màu đỏ pastel khi input không hợp lệ*/
+         }
+
+         .title
+         {
+            color: rgba(255,255,255,0.95);
+            text-align: center;
+            margin-bottom: 15px;/*Khoảng cách dưới*/
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(111,168,255,0.3); /*Hiệu ứng phát sáng nhẹ hơn*/
+         }
+
+         .subtitle{
+            color: rgba(255,255,255,0.45); /*Màu chữ phụ tối hơn*/
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 50px;
+            letter-spacing: 1px; /*Giãn chữ thêm*/
+         }
+         
+         .button{
+            width: 100%; /*Full chiều ngang*/
+            padding: 14px;
+            background: linear-gradient(135deg
+            , #5a8fff 0%
+            , #7b5ff5); /*Nền gradient tối hơn*/
+            color: rgba(255,255,255,0.95);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer; /*Con trỏ tay*/
+            transition: all 0.3s ease; 
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(90,143,255,0.3); /*Bóng nhẹ hơn*/
+         }
+         
+         button:hover{
+            transform: translateY(-2px); /*Nhảy lên nhẹ*/
+            box-shadow: 0 6px 25px rgba(90,143,255,0.45);
+         }
+         
+         button:active{
+            transform: translateY(0); /*Khi thoát ra input thì hạ xuống lại*/
+         }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <h1 class = "title">Welcome</h1>
+        <h2 class ="subtitle">ENTER YOUR INFOMATION</h2>
+        <div class = "input-container">
+            <input type = "text" class = "input-field" placeholder=" " required>
+            <label class = "input-label">Username</label>
+            <span class = "input-highlight"></span>
+        </div>
+        <div class = "input-container">
+            <input type = "password" class = "input-field" placeholder=" " required>
+            <label class = "input-label">Password</label>
+            <span class = "input-highlight"></span>
+        </div>
+        <button class = "button">Login</button>
+    </div>
+</body>
+</html>
