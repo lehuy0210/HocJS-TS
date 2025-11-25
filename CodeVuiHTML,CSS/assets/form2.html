@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Đơn gia nhập Hội Fan Cuồng Đội Tuyển Bóng Đá Việt Nam</h1>
+    <p>Chào mừng bạn đến với hội của những trái tim đỏ rực, cháy hết mình vì màu cờ sắc áo!</p>
+    <form>
+        <label for = "hovanten">Họ và tên (nhập đúng để chúng tôi gọi bạn đi bão nha!)</label>
+        <input type = "text" id = "hovaten" name = "hovaten" placeholder="VD: Nguyễn Văn Toàn" required/>
+        <br><br>
+        <label for = "email">Email để nhận link xem bóng đá chất lượng cao</label>
+        <input type = "email" id = "email" name = "email" placeholder="VD:mtikcode@gmail.vn" required/>
+        <br><br>
+        <label for = "textarea">Mô tả cảm xúc khi Việt Nam ghi bàn phút 90+</label>
+        <textarea rows = "5" cols = "50" placeholder="Gõ thật lòng, đừng giấu cảm xúc..." spellcheck></textarea>
+        <br><br>
+
+        <fieldset>
+            <legend>Giới tính của bạn(để chia chỗ ngồi trên xe đi bão)</legend>
+            <input type = "radio" name = "sex" value = "nam">Nam
+            <br>
+            <input type = "radio" name = "sex" value = "nu">Nữ
+        </fieldset>
+
+        <br>
+            <label for = "position">Bạn thích chơi ở vị trí nào trên sân bóng: </label>
+            <select name = "position" id = "position">
+                <option value = "tien dao">Tiền đạo</option>
+                <option value = "tien ve">Tiền vệ</option>
+                <option value = "hau ve">Hậu vệ</option>
+                <option value = "thu mon">Thủ môn</option>
+            </select>
+
+        <br><br>
+            <label for = "fan-level">Mức độ fan cuồng của bạn (từ 1 đến 10):</label>
+            <input type = "number" id = "fan-level" name = "fan-level" min = "1" max = "10" step = "1" value = "10"/>
+        <br><br>
+        
+        <label for = "favorite-player">Chọn cầu thủ bạn yêu thích nhất trong đội tuyển Việt Nam:</label>
+        <input type = "text" id = "favorite-player" name = "favorite-player" list = "players">
+        <datalist id = "players">
+            <option value = "Quang Hai"></option>
+            <option value = "Cong Phuong"></option>
+            <option value = "Van Toan"></option>
+            <option value = "Duc Chinh"></option>
+        </datalist>
+        <br>
+        <p><b>Bạn có cam kết không quay lưng khi đội tuyển đá chưa được tốt?</b></p>
+        
+        <label for = "camket">Tôi cam kết
+        <input type = "checkbox" id = "agree" name = "agree">
+        <br><br>
+        <input type = "submit" value = "Gửi đơn(Chuẩn bị đi bão thôi)"/>
+        <input type = "reset" value = "Xóa hết, viết lại vì cảm xúc dâng trào"/>
+    </form>
+</body>
+</html>
