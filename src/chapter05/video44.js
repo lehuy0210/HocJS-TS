@@ -27,11 +27,11 @@ const person = {
     age: 24,
     address: "Vietnam"
 }
-// for(let key in person)
-// {
-//     console.log(key, person[key]);
-// }
-for(let value of Object.entries(person))
-{{
-    console.log(value);
-}}
+for(let key in person)
+{
+    console.log(key, person[key]);
+}
+// for(let value of Object.entries(person))
+// {{
+//     console.log(value);
+// }}
