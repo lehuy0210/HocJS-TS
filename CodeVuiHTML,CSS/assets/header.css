@@ -1,0 +1,80 @@
+/** ========= 
+	Header
+===============*/
+@import "theme.css";
+header {
+    margin-top: 40px;
+}
+
+.header__container {
+    display: flex;
+    gap: 40px;
+
+    & p {
+    }
+
+    & span {
+        font-weight: 600;
+    }
+}
+
+.header__title {
+    font-weight: 600;
+}
+
+.header__column--left {
+    display: flex;
+    flex: 1;
+    gap: 24px;
+    align-items: center;
+
+    & .header__content--left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    & .header__badge_container {
+        display: flex;
+        gap: 6px;
+        text-align: center;
+    }
+
+    & .badge {
+        color: var(--p-950);
+        padding: 4px 12px;
+        border-radius: 4px;
+        /* line-clamp */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        overflow: hidden;
+    }
+    border: solid 2px red;
+}
+
+.header__column--right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: end;
+    gap: 8px;
+    border: solid 2px red;
+}
+
+.header__img {
+    border-radius: 100px;
+    width: 118px;
+    height: 118px;
+    box-shadow:
+        inset 0px -1px 1px hsla(0, 0%, 100%, 0.5),
+        0 4px 6px -1px hsla(0, 0%, 0%, 0.2),
+        0 2px 4px -2px hsla(0, 0%, 0%, 0.2),
+        inset 0px 1px 3px hsla(0, 0%, 0%, 0.1);
+    background-image: url('./babythree1.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-shrink: 0;
+}

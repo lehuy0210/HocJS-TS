@@ -1,0 +1,10 @@
+/** =========== 
+	Footer
+===============*/
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background-image: var(--gradient-color);
+    max-width: none !important;
+    border: 2px solid red;
+}
